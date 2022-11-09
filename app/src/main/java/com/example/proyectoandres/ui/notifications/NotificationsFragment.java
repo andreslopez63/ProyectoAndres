@@ -1,17 +1,30 @@
 package com.example.proyectoandres.ui.notifications;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.arch.lifecycle.ViewModelProvider;
 
+import com.example.proyectoandres.LoginActivity;
+import com.example.proyectoandres.MainActivity;
+import com.example.proyectoandres.NewLoginActivity;
+import com.example.proyectoandres.R;
+import com.example.proyectoandres.SeleccionarDiaActivity;
 import com.example.proyectoandres.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+    private Button btpedircita, btllamar;
+    private Button btpopup;
 
     private FragmentNotificationsBinding binding;
 
@@ -21,7 +34,15 @@ public class NotificationsFragment extends Fragment {
                 new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(NotificationsViewModel.class);
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+
+        binding.btpopup.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                createNewContactDialog();
+            }
+        });
         View root = binding.getRoot();
+
 
         final TextView textView = binding.textNotifications;
         notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -33,4 +54,26 @@ public class NotificationsFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    public void createNewContactDialog() {
+        dialogBuilder = new AlertDialog.Builder(getActivity());
+        final View contactPopupView = getLayoutInflater().inflate(R.layout.popup, null);
+        btpedircita= (Button) contactPopupView.findViewById(R.id.btpedircita);
+        btllamar = (Button) contactPopupView.findViewById(R.id.btllamar);
+        btpedircita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), SeleccionarDiaActivity.class);
+
+                startActivity(i);
+            }
+        });
+
+        dialogBuilder.setView(contactPopupView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
+
+
 }
