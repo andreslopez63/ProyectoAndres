@@ -8,13 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProvider;
 
-import com.example.proyectoandres.LoginActivity;
-import com.example.proyectoandres.MainActivity;
-import com.example.proyectoandres.NewLoginActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.proyectoandres.R;
 import com.example.proyectoandres.SeleccionarDiaActivity;
 import com.example.proyectoandres.databinding.FragmentNotificationsBinding;
@@ -31,10 +29,9 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         NotificationsViewModel notificationsViewModel =
-                new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(NotificationsViewModel.class);
+                new ViewModelProvider(this).get(NotificationsViewModel.class);
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
-
         binding.btpopup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
@@ -42,7 +39,6 @@ public class NotificationsFragment extends Fragment {
             }
         });
         View root = binding.getRoot();
-
 
         final TextView textView = binding.textNotifications;
         notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -73,7 +69,4 @@ public class NotificationsFragment extends Fragment {
         dialog = dialogBuilder.create();
         dialog.show();
     }
-
-
-
 }

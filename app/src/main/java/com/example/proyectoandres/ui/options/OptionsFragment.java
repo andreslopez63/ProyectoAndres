@@ -1,14 +1,17 @@
 package com.example.proyectoandres.ui.options;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.proyectoandres.databinding.FragmentNotificationsBinding;
+import com.example.proyectoandres.R;
 
 import com.example.proyectoandres.databinding.FragmentOptionsBinding;
 
@@ -19,7 +22,7 @@ public class OptionsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         OptionsViewModel optionsViewModel =
-                new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(OptionsViewModel.class);
+                new ViewModelProvider(this).get(OptionsViewModel.class);
 
         binding = FragmentOptionsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
