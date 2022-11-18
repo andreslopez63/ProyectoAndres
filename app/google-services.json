@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1047027287029",
+    "project_id": "veterinarioandres-42526",
+    "storage_bucket": "veterinarioandres-42526.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047027287029:android:089dcfa028f1084ce216bc",
+        "android_client_info": {
+          "package_name": "com.example.proyectoandres"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047027287029-02p0n7fj5qtiq71omraajpdfdhl8ku6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7pLdRkOMpIOBrxpn-cO2CdZLFXCeGtAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047027287029-02p0n7fj5qtiq71omraajpdfdhl8ku6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
