@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -19,12 +20,15 @@ public class OptionsFragment extends Fragment {
 
     private FragmentOptionsBinding binding;
 
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         OptionsViewModel optionsViewModel =
                 new ViewModelProvider(this).get(OptionsViewModel.class);
 
         binding = FragmentOptionsBinding.inflate(inflater, container, false);
+
         View root = binding.getRoot();
 
         final TextView textView = binding.textOptions;
