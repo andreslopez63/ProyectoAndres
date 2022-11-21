@@ -14,13 +14,19 @@
         android:theme="@style/Theme.ProyectoAndres"
         tools:targetApi="31">
         <activity
+            android:name=".ModPetActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SeleccionarDiaActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".NewLoginActivity"
             android:exported="false">

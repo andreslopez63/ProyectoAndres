@@ -39,7 +39,8 @@ public class PetsFragment extends Fragment {
     FirebaseFirestore db;
     private FragmentPetsBinding binding;
     ProgressDialog progressDialog;
-    FirebaseUser mAuth;
+
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -55,16 +56,8 @@ public class PetsFragment extends Fragment {
         binding = FragmentPetsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //
-
-
-
-
-
         //Toast.makeText(getActivity(), "Usuario: "+ getArguments().getString("amount"), Toast.LENGTH_LONG).show();
       //  Toast.makeText(getActivity(), "Usuario: "+ getArguments().getString("privacyPolicyLink"), Toast.LENGTH_LONG).show();
-
-
 
         //
         binding.recyclerPetsView.setHasFixedSize(true);
@@ -77,8 +70,9 @@ public class PetsFragment extends Fragment {
         binding.recyclerPetsView.setAdapter(petAdapter);
 
         //
-
-       // Toast.makeText(getActivity(), "Usuario: "+ this.getArguments().getString("usuariodesdeMain"), Toast.LENGTH_LONG).show();
+        Bundle extras = getActivity().getIntent().getExtras();
+        String usuario = extras.getString("usuario");
+        binding.txtusuarioMascota.setText(usuario);
 
         //
         EventChangeListener();
@@ -88,6 +82,7 @@ public class PetsFragment extends Fragment {
     private void EventChangeListener() {
         Bundle extras = getActivity().getIntent().getExtras();
         String usuario = extras.getString("usuario");
+
         db.collection("usuarios").document(usuario).collection("mascotas").orderBy("nombrePet", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -104,8 +99,13 @@ public class PetsFragment extends Fragment {
                 for(DocumentChange dc : value.getDocumentChanges()){
 
                     if(dc.getType() == DocumentChange.Type.ADDED){
-                        petArrayList.add(dc.getDocument().toObject(Pet.class));
+                        Pet pet1 = dc.getDocument().toObject(Pet.class);
+                        pet1.setUsuario(usuario);
+                        pet1.setIdmascota(dc.getDocument().getId());
 
+                        petArrayList.add(pet1);
+
+                        Log.e("cosas",dc.getDocument().toString());
                     }
                     petAdapter.notifyDataSetChanged();
                     if(progressDialog.isShowing())
