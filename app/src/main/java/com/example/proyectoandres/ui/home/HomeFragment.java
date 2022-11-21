@@ -49,9 +49,11 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         binding.recycler.setHasFixedSize(true);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         db = FirebaseFirestore.getInstance();
         articuloArrayList = new ArrayList<Articulo>();
         articuloAdapter = new ArticuloAdapter(getActivity(),articuloArrayList);
+
         binding.recycler.setAdapter(articuloAdapter);
 
         EventChangeListener();

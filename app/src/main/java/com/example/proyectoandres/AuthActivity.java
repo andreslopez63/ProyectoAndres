@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.proyectoandres.ui.pets.PetsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class AuthActivity extends AppCompatActivity {
     Button aceptar;
     Button cuentanueva;
+    Button googleButton;
     Bundle bundle = new Bundle();
     EditText edittxtusuario;
     EditText editTextTextPassword;
@@ -39,6 +41,7 @@ public class AuthActivity extends AppCompatActivity {
         bundle.putString("message","Integracion de FireBase");
         analytics.logEvent("InitScreen", bundle);
         aceptar = findViewById(R.id.aceptar);
+        googleButton= findViewById(R.id.googleButton);
         cuentanueva = findViewById(R.id.cuentanueva);
         edittxtusuario =findViewById(R.id.edittxtusuario);
         editTextTextPassword = findViewById(R.id.editTextTextPassword);
@@ -74,6 +77,7 @@ public class AuthActivity extends AppCompatActivity {
 
                             updateUI(user);
                             Intent i = new Intent(AuthActivity.this, MainActivity.class);
+                            i.putExtra("usuario", email);
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -114,6 +118,11 @@ public class AuthActivity extends AppCompatActivity {
         }
 
     }
+
+    if (v.getId()==googleButton.getId()){
+
+    }
+
         if (v.getId()==cuentanueva.getId()){
             Intent i = new Intent(AuthActivity.this, NewLoginActivity.class);
             startActivity(i);
@@ -128,4 +137,9 @@ public class AuthActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
 
     }
+
+
+
+
+
 }

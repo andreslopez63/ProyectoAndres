@@ -13,9 +13,17 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.proyectoandres.ui.dashboard.DashboardFragment"
+        android:name="com.example.proyectoandres.ui.pets.PetsFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_pets"
+        >
+        <argument
+
+            android:name="privacyPolicyLink"
+            app:argType="string"
+            android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_notifications"

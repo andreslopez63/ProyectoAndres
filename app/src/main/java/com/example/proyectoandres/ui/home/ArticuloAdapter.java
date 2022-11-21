@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectoandres.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class ArticuloAdapter extends RecyclerView.Adapter<ArticuloAdapter.ViewHo
     @Override
     public ArticuloAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
-                .inflate(R.layout.item, parent, false);
+                .inflate(R.layout.view_articulo, parent, false);
 
         return new ViewHolder(view);
 
@@ -39,8 +40,10 @@ public class ArticuloAdapter extends RecyclerView.Adapter<ArticuloAdapter.ViewHo
 
 
         viewHolder.titulo.setText(listaArticulos.get(position).getTitulo());
-        viewHolder.imagen.setText(listaArticulos.get(position).getImagen());
-        // viewHolder.foto.setImageResource(listaArticulos.get(position).getimagenId());
+       // viewHolder.imagen.setText(listaArticulos.get(position).getImagen());
+        // viewHolder.imagen.
+        Picasso.get().load(listaArticulos.get(position).getImagen()).error(R.mipmap.ic_launcher_round)
+                .into(viewHolder.imagen);
     }
 
     @Override
@@ -51,13 +54,14 @@ public class ArticuloAdapter extends RecyclerView.Adapter<ArticuloAdapter.ViewHo
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-      TextView titulo, imagen;
+      TextView titulo;
+      ImageView imagen;
 
 
               public ViewHolder(View itemView) {
                   super(itemView);
                   titulo = (TextView) itemView.findViewById(R.id.tvfirstName);
-                 imagen= (TextView) itemView.findViewById(R.id.tvLastName);
+                 imagen= (ImageView) itemView.findViewById(R.id.imagenart);
 
 
               }

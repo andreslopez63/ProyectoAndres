@@ -1,25 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-   >
-
-        <ImageView
-            android:id="@+id/idImagen"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-
-            android:layout_marginTop="10dp"
-            />
-        <TextView
-            android:id="@+id/idNombre"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="16dp">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/element_text"/>
 
 
+            android:orientation="vertical"
+            android:background="@color/purple_200">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+
+                    android:padding="14dp">
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:src="@color/cardview_dark_background"
+                            android:id="@+id/imagenart"
+                            android:scaleType="centerCrop"
+
+                            />
+                        <TextView
+                            android:id="@+id/tvfirstName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="8dp"
+                            android:text="Arya"
+                            android:textColor="@color/white"
+                                android:paddingBottom="14dp"
+                            android:textSize="20sp" />
 
 
-</LinearLayout>
+                </RelativeLayout>
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>

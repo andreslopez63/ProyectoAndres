@@ -1,4 +1,4 @@
-package com.example.proyectoandres.ui.dashboard;
+package com.example.proyectoandres.ui.pets;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
