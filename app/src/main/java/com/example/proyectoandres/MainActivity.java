@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String usuario = extras.getString("usuario");
-        Toast.makeText(this, "Usuario conectado: "+usuario , Toast.LENGTH_LONG).show();
+        String irafragment= extras.getString("irafragment");
 
 
 
@@ -49,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        if (irafragment.equals("2")){
+           // Toast.makeText(this, irafragment, Toast.LENGTH_SHORT).show();
+            //Método para cambiar de posicion
+          //  navController.navigate(R.id.navigation_dashboard);
 
+        }
 
 
     }

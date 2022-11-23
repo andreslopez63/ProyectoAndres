@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder>  {
+public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Pet> petArrayList;
@@ -43,8 +43,15 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder>  {
 
         Pet pet = petArrayList.get(position);
         viewHolder.nombreMascota.setText(pet.nombrePet);
-        Picasso.get().load(petArrayList.get(position).getImagenPet()).error(R.mipmap.ic_launcher_round)
-                .into(viewHolder.imagenMascota);
+        if (petArrayList.get(position).getImagenPet() != null) {
+            Picasso.get().load(petArrayList.get(position).getImagenPet()).error(R.mipmap.ic_launcher_round)
+                    .into(viewHolder.imagenMascota);
+        }else{
+            viewHolder.imagenMascota.setImageResource(R.drawable._527324);
+        }
+
+
+
 
         viewHolder.setOnClickListeners(pet.getUsuario(), pet.getIdmascota());
 
@@ -55,8 +62,6 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder>  {
     public int getItemCount() {
         return petArrayList.size();
     }
-
-
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -75,7 +80,8 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder>  {
 
 
         }
-        public void setOnClickListeners(String nombreUsuario, String idmascota){
+
+        public void setOnClickListeners(String nombreUsuario, String idmascota) {
             cv_pets.setOnClickListener(this);
             this.nombreusuario = nombreUsuario;
             this.idmascota = idmascota;

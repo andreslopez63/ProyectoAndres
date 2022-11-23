@@ -1,6 +1,7 @@
 package com.example.proyectoandres.ui.pets;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
@@ -19,6 +22,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.proyectoandres.AddPetActivity;
+import com.example.proyectoandres.AuthActivity;
+import com.example.proyectoandres.MainActivity;
 import com.example.proyectoandres.R;
 import com.example.proyectoandres.databinding.FragmentPetsBinding;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,8 +47,6 @@ public class PetsFragment extends Fragment {
     ProgressDialog progressDialog;
 
 
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -57,7 +61,7 @@ public class PetsFragment extends Fragment {
         View root = binding.getRoot();
 
         //Toast.makeText(getActivity(), "Usuario: "+ getArguments().getString("amount"), Toast.LENGTH_LONG).show();
-      //  Toast.makeText(getActivity(), "Usuario: "+ getArguments().getString("privacyPolicyLink"), Toast.LENGTH_LONG).show();
+        //  Toast.makeText(getActivity(), "Usuario: "+ getArguments().getString("privacyPolicyLink"), Toast.LENGTH_LONG).show();
 
         //
         binding.recyclerPetsView.setHasFixedSize(true);
@@ -75,6 +79,17 @@ public class PetsFragment extends Fragment {
         binding.txtusuarioMascota.setText(usuario);
 
         //
+        binding.btagregarmascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getActivity(), AddPetActivity.class);
+                i.putExtra("nombreusuario", usuario);
+                startActivity(i);
+            }
+        });
+
+        //
         EventChangeListener();
         return root;
     }
@@ -85,35 +100,35 @@ public class PetsFragment extends Fragment {
 
         db.collection("usuarios").document(usuario).collection("mascotas").orderBy("nombrePet", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                if(error != null){
+                        if (error != null) {
 
-                    if(progressDialog.isShowing())
-                        progressDialog.dismiss();
+                            if (progressDialog.isShowing())
+                                progressDialog.dismiss();
 
-                    Log.e("Firestore error", error.getMessage());
-                    return;
-                }
-                for(DocumentChange dc : value.getDocumentChanges()){
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
+                        for (DocumentChange dc : value.getDocumentChanges()) {
 
-                    if(dc.getType() == DocumentChange.Type.ADDED){
-                        Pet pet1 = dc.getDocument().toObject(Pet.class);
-                        pet1.setUsuario(usuario);
-                        pet1.setIdmascota(dc.getDocument().getId());
+                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                                Pet pet1 = dc.getDocument().toObject(Pet.class);
+                                pet1.setUsuario(usuario);
+                                pet1.setIdmascota(dc.getDocument().getId());
 
-                        petArrayList.add(pet1);
+                                petArrayList.add(pet1);
 
-                        Log.e("cosas",dc.getDocument().toString());
+                                Log.e("cosas", dc.getDocument().toString());
+                            }
+                            petAdapter.notifyDataSetChanged();
+                            if (progressDialog.isShowing())
+                                progressDialog.dismiss();
+                        }
+
                     }
-                    petAdapter.notifyDataSetChanged();
-                    if(progressDialog.isShowing())
-                        progressDialog.dismiss();
-                }
-
-            }
-        });
+                });
     }
 
     @Override
@@ -121,4 +136,6 @@ public class PetsFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }

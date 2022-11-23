@@ -9,19 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -33,7 +29,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ModPetActivity extends AppCompatActivity {
+public class AddPetActivity extends AppCompatActivity {
     EditText cnombreMascota, ctipoMascota, csexoMascota, cfechanacMascota, crazaMascota;
     TextView txtModNombreUsuario, txturiimagen;
     Button btCambiarMascota, cambiarimagen;
@@ -42,13 +38,10 @@ public class ModPetActivity extends AppCompatActivity {
     StorageReference storageReference;
     Uri urimascota;
     String usuario, idmascota, nuevaURL;
-
-    private static final String TAG = "ModPetActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mod_pet);
+        setContentView(R.layout.activity_add_pet);
 
         cnombreMascota = findViewById(R.id.cnombreMascota);
         ctipoMascota = findViewById(R.id.ctipoMascota);
@@ -64,7 +57,6 @@ public class ModPetActivity extends AppCompatActivity {
         //Recibo datos de la mascota para poder mostrarla por pantalla
         Bundle extras = getIntent().getExtras();
         usuario = extras.getString("nombreusuario");
-        idmascota = extras.getString("idmascota");
         txtModNombreUsuario.setText(usuario);
 
         //inflobotones
@@ -74,45 +66,23 @@ public class ModPetActivity extends AppCompatActivity {
         //inicio la base de datos
         db = FirebaseFirestore.getInstance();
 
-        actualizalosdatos();
-    }
-
-    //Recojo los datos de la base de datos para mostrar lo que tienen
-    protected void actualizalosdatos() {
-        DocumentReference docRef = db.collection("usuarios").document(usuario).collection("mascotas").document(idmascota);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-
-
-                        Map<String, Object> mapamascota = new HashMap(document.getData());
-                        cnombreMascota.setText(mapamascota.get("nombrePet").toString());
-                        ctipoMascota.setText(mapamascota.get("ctipoMascota").toString());
-                        csexoMascota.setText(mapamascota.get("csexoMascota").toString());
-                        crazaMascota.setText(mapamascota.get("crazaMascota").toString());
-                        Picasso.get().load(mapamascota.get("imagenPet").toString()).resize(0, 200).error(R.mipmap.ic_launcher_round)
-                                .into(cimagenMascota);
-                        txturiimagen.setText(mapamascota.get("imagenPet").toString());
-
-
-                        //txturiimagen.setText((CharSequence) uri);
-
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+        prueba();
     }
 
 
-    //actualizo los cambios hecho en la mascota
+    private void prueba(){
+
+        if(cnombreMascota.getText()!=null){
+
+
+           return;
+
+        }else{
+            Toast.makeText(this, "ESTOY nulo", Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(this, "no estoy nulo", Toast.LENGTH_SHORT).show();
+    }
+
     private void uploadData() {
 
 
@@ -129,16 +99,17 @@ public class ModPetActivity extends AppCompatActivity {
         mascotas.put("imagenPet", txturiimagen.getText().toString());
 
 
-        DocumentReference docRef = db.collection("usuarios").document(usuario).collection("mascotas").document(idmascota);
-        docRef.update(mascotas).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+        DocumentReference docRef = db.collection("usuarios").document(usuario).collection("mascotas").document(cnombreMascota.getText().toString());
+        docRef.set(mascotas).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(ModPetActivity.this, ":D se pudieron guardar los nuevos datos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddPetActivity.this, ":D se pudieron guardar los nuevos datos", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ModPetActivity.this, "error al guardar los datos :(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddPetActivity.this, "error al guardar los datos :(", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -146,6 +117,8 @@ public class ModPetActivity extends AppCompatActivity {
         i.putExtra("usuario", txtModNombreUsuario.getText());
         i.putExtra("irafragment","2");
         this.startActivity(i);
+
+
     }
 
     //método para llamar el explorador de imágenes
@@ -199,6 +172,4 @@ public class ModPetActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 }
