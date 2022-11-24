@@ -3,20 +3,20 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:icon="@drawable/ic_baseline_library_books_24"
+        android:title="@string/Articulos" />
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:icon="@drawable/ic_baseline_pets_24"
+        android:title="@string/Mascotas" />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:icon="@drawable/ic_baseline_doorbell_24"
+        android:title="@string/Citas" />
     <item
         android:id="@+id/navigation_options"
-        android:icon="@drawable/ic_options_black_24dp"
-        android:title="@string/title_options" />
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/Opciones" />
 </menu>

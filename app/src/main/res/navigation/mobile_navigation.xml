@@ -17,11 +17,7 @@
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_pets"
         >
-        <argument
 
-            android:name="privacyPolicyLink"
-            app:argType="string"
-            android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
     </fragment>
 
 

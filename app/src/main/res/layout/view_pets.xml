@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_margin="16dp"
-    android:background="@color/purple_200"
+
+    android:backgroundTint="@color/morado_app"
     app:cardCornerRadius="8dp"
-    app:cardElevation="8dp">
+    app:cardElevation="8dp"
+    >
 
     <LinearLayout
 
@@ -26,7 +28,7 @@
                 android:id="@+id/iv_Mascota"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center|left"
+                android:gravity="left"
                 android:padding="10dp" />
         </LinearLayout>
 

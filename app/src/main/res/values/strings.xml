@@ -5,5 +5,9 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_options">Options</string>
     <string name="element_text">Element</string>
+    <string name="Articulos">Articulos</string>
+    <string name="Mascotas">Mascotas</string>
+    <string name="Citas">Citas</string>
+    <string name="Opciones">Opciones</string>
 
 </resources>

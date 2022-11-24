@@ -4,20 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModPetActivity">
+    tools:context=".ModPetActivity"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/txtModNombreUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
-
+            android:text="TextView"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre:" />
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColorHint="#757575"
+            android:textColor="@color/black"
             android:id="@+id/cnombreMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,8 +38,15 @@
             android:minHeight="48dp"
             android:hint="Nombre"
              />
-
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo: (Perro,Gato,Conejo...)" />
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColorHint="#757575"
+            android:textColor="@color/black"
             android:id="@+id/ctipoMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,33 +54,57 @@
             android:hint="Tipo"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
-
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sexo:" />
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black"
             android:id="@+id/csexoMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Sexo"
             android:inputType="textPersonName"
-            android:minHeight="48dp" />
-
+            android:minHeight="48dp"
+            android:textColorHint="#757575"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Nacimiento:" />
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black"
             android:id="@+id/cfechanacMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Fecha de Nacimiento"
+            android:hint="12/3/2012..."
             android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
 
+            />
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Raza:" />
         <EditText
+
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black"
             android:id="@+id/crazaMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Raza"
             android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textColorHint="#757575"/>
         <TextView
             android:id="@+id/txturiimagen"
             android:layout_width="wrap_content"
@@ -79,12 +122,14 @@
             android:id="@+id/cambiarimagen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cambiarImagen"/>
+            android:text="cambiar Imagen"
+            android:backgroundTint="@color/morado_app"/>
 
         <Button
             android:id="@+id/btCambiarMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cambiar" />
+            android:text="Cambiar DATOS"
+            android:backgroundTint="@color/morado_app"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

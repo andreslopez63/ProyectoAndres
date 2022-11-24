@@ -4,20 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModPetActivity">
+    tools:context=".ModPetActivity"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/txtModNombreUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/black"/>
 
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColorHint="#757575"
+            android:textColor="@color/black"
             android:id="@+id/cnombreMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +34,9 @@
             />
 
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColorHint="#757575"
+            android:textColor="@color/black"
             android:id="@+id/ctipoMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +46,9 @@
             android:minHeight="48dp" />
 
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColorHint="#757575"
+            android:textColor="@color/black"
             android:id="@+id/csexoMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,6 +58,9 @@
             android:minHeight="48dp" />
 
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColorHint="#757575"
+            android:textColor="@color/black"
             android:id="@+id/cfechanacMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,6 +70,9 @@
             android:minHeight="48dp" />
 
         <EditText
+            android:backgroundTint="@color/black"
+            android:textColorHint="#757575"
+            android:textColor="@color/black"
             android:id="@+id/crazaMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,6 +81,7 @@
             android:inputType="textPersonName"
             android:minHeight="48dp" />
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/txturiimagen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -79,12 +98,14 @@
             android:id="@+id/cambiarimagen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="agregar Imagen"/>
+            android:text="agregar Imagen"
+            android:backgroundTint="@color/morado_app"/>
 
         <Button
             android:id="@+id/btCambiarMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar Mascota" />
+            android:text="Agregar Mascota"
+            android:backgroundTint="@color/morado_app"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

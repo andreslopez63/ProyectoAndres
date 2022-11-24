@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="50dp">
 
 
 

@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.pets.PetsFragment"
-    android:id="@+id/layout_petsfragment">
+    android:id="@+id/layout_petsfragment"
+    android:background="@color/white"
+    >
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
 
         <TextView
             android:id="@+id/txtusuarioMascota"
