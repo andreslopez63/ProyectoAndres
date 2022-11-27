@@ -12,6 +12,7 @@ public class Pet {
         this.idmascota = idmascota;
     }
 
+
     public String getNombrePet() {
         return nombrePet;
     }

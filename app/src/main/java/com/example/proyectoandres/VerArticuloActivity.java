@@ -64,7 +64,7 @@ public class VerArticuloActivity extends AppCompatActivity {
                         txtVerArtSub.setText(mapaarticulo.get("subtitulo").toString());
                         txtVerArtTexto.setText(mapaarticulo.get("texto").toString());
 
-
+                        if (mapaarticulo.get("imagen").toString()!="")
                         Picasso.get().load(mapaarticulo.get("imagen").toString()).resize(0, 400).centerCrop().error(R.mipmap.ic_launcher_round)
                                 .into(imagenVerArt);
 

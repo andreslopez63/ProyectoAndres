@@ -23,19 +23,12 @@
             android:text="TextView"
             android:visibility="invisible"/>
 
-        <Spinner
-            android:id="@+id/spinnerUsuarios"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerPetsView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
         </androidx.recyclerview.widget.RecyclerView>
-
 
     </LinearLayout>
 

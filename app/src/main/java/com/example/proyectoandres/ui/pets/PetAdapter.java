@@ -78,7 +78,6 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder> {
             imagenMascota = itemView.findViewById(R.id.iv_Mascota);
             cv_pets = itemView.findViewById(R.id.cv_pets);
 
-
         }
 
         public void setOnClickListeners(String nombreUsuario, String idmascota) {

@@ -54,12 +54,28 @@
                 android:text="Introduce tu nombre" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/etxtUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Elena Fuentes" />
+                android:minHeight="48dp"
+                android:text="Elena" />
+
+            <TextView
+                android:id="@+id/textView4a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Introduce tus apellidos" />
+
+            <EditText
+                android:id="@+id/etxtApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:text="Gonzalez Gallego" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -73,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="hola@unsitiogenial.es" />
+                android:minHeight="48dp"
+                android:text="pepe@coco.es" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -86,20 +103,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:text="pepecoco"/>
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Introduce fecha de nacimiento" />
+                android:text="Introduce tu telefono" />
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/etxtTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="date" />
+                android:inputType="date"
+                android:minHeight="48dp"
+                android:text="655427270"/>
+
+
+
+            <CheckBox
+                android:id="@+id/ckbVete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cuenta Veterinario" />
 
             <Button
                 android:id="@+id/aceptarlogin"

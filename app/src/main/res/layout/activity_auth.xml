@@ -63,7 +63,7 @@
                 android:hint="Usuario"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="andreslp@yahoo.es"/>
+                android:text="Natalia@coco.es"/>
 
             <TextView
                 android:id="@+id/txtcontraseña"
@@ -87,7 +87,7 @@
                 android:hint="*****"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:text="yunalesca"/>
+                android:text="pepecoco"/>
 
         </LinearLayout>
 

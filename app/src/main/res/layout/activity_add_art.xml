@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddArtActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+
+        >
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+    <EditText
+        android:id="@+id/etVerArtTitutlo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imagenVerArt"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/grey"
+        android:hint="Aquí va el Título"
+        android:textColor="@color/black"
+        android:textSize="26dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:textColorHint="@color/grey"
+        android:id="@+id/etVerArtSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imagenVerArt"
+        android:hint="Aquí va el subtítulo"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"
+       />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:text="Pulse en la imagen para cambiarla"
+            />
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/imagenVerArt"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/_527324"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:textColorHint="@color/grey"
+        android:id="@+id/etVerArtTexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imagenVerArt"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"
+        android:hint="Aquí va el texto del artículo" />
+
+        <Button
+            android:id="@+id/btGuardarArt"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+
+            android:text="Guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintVertical_bias="0.74" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uriartImagen"
+            android:text=""/>
+    </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

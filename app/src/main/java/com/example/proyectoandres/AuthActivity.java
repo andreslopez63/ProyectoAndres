@@ -78,7 +78,7 @@ public class AuthActivity extends AppCompatActivity {
                             updateUI(user);
                             Intent i = new Intent(AuthActivity.this, MainActivity.class);
                             i.putExtra("usuario", email);
-                            i.putExtra("irafragment","1");
+                            i.putExtra("usuarioacambiar","");
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.

@@ -29,100 +29,79 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddPetActivity extends AppCompatActivity {
-    EditText cnombreMascota, ctipoMascota, csexoMascota, cfechanacMascota, crazaMascota;
-    TextView txtModNombreUsuario, txturiimagen;
-    Button btCambiarMascota, cambiarimagen;
+public class AddArtActivity extends AppCompatActivity {
+
+    EditText etVerArtTitutlo, etVerArtSub, etVerArtTexto;
+    ImageView imagenVerArt;
+    TextView uriartImagen;
     FirebaseFirestore db;
-    ImageView cimagenMascota;
+    Button btGuardarArt;
     StorageReference storageReference;
-    Uri urimascota;
-    String usuarioacambiar, idmascota, nuevaURL, usuario;
+    String usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_pet);
+        setContentView(R.layout.activity_add_art);
 
-        cnombreMascota = findViewById(R.id.cnombreMascota);
-        ctipoMascota = findViewById(R.id.ctipoMascota);
-        txtModNombreUsuario = findViewById(R.id.txtModNombreUsuario);
-        cimagenMascota = findViewById(R.id.cimagenMascota);
-        btCambiarMascota = findViewById(R.id.btCambiarMascota);
-        csexoMascota = findViewById(R.id.csexoMascota);
-        cfechanacMascota = findViewById(R.id.cfechanacMascota);
-        crazaMascota = findViewById(R.id.crazaMascota);
-        txturiimagen = findViewById(R.id.txturiimagen);
-        cambiarimagen = findViewById(R.id.cambiarimagen);
+        etVerArtTitutlo = findViewById(R.id.etVerArtTitutlo);
+        etVerArtSub = findViewById(R.id.etVerArtSub);
+        etVerArtTexto = findViewById(R.id.etVerArtTexto);
+        imagenVerArt = findViewById(R.id.imagenVerArt);
+        btGuardarArt = findViewById(R.id.btGuardarArt);
+        uriartImagen = findViewById(R.id.uriartImagen);
 
-        //Recibo datos de la mascota para poder mostrarla por pantalla
         Bundle extras = getIntent().getExtras();
-        usuarioacambiar = extras.getString("nombreusuario");
         usuario = extras.getString("nombreusuario");
-        txtModNombreUsuario.setText(usuarioacambiar);
-
-        Toast.makeText(this, usuario, Toast.LENGTH_SHORT).show();
-
-        //inflobotones
-        btCambiarMascota.setOnClickListener(v -> uploadData());
-        cambiarimagen.setOnClickListener(v -> mGetContent.launch("image/*"));
-
-        //inicio la base de datos
         db = FirebaseFirestore.getInstance();
+        //inflobotones
+        btGuardarArt.setOnClickListener(v -> uploadData());
+        imagenVerArt.setOnClickListener(v -> mGetContent.launch("image/*"));
 
-        prueba();
     }
 
 
-    private void prueba(){
-
-        if(cnombreMascota.getText()!=null){
-
-
-           return;
-
-        }else{
-            Toast.makeText(this, "ESTOY nulo", Toast.LENGTH_SHORT).show();
-        }
-        Toast.makeText(this, "no estoy nulo", Toast.LENGTH_SHORT).show();
-    }
 
     private void uploadData() {
 
 
-        Map<String, Object> mascotas = new HashMap<>();
+        Map<String, Object> articulos = new HashMap<>();
 
-        mascotas.put("nombrePet", cnombreMascota.getText().toString());
+        articulos.put("titulo", etVerArtTitutlo.getText().toString());
 
-        mascotas.put("ctipoMascota", ctipoMascota.getText().toString());
+        articulos.put("subtitulo", etVerArtSub.getText().toString());
 
-        mascotas.put("csexoMascota", csexoMascota.getText().toString());
+        articulos.put("texto", etVerArtTexto.getText().toString());
 
-        mascotas.put("crazaMascota", crazaMascota.getText().toString());
-
-        mascotas.put("imagenPet", txturiimagen.getText().toString());
+        articulos.put("imagen", uriartImagen.getText().toString());
 
 
 
-        DocumentReference docRef = db.collection("usuarios").document(usuarioacambiar).collection("mascotas").document(cnombreMascota.getText().toString());
-        docRef.set(mascotas).addOnSuccessListener(new OnSuccessListener<Void>() {
+        //   articulos.put("imagenPet", imagenVerArt);
+
+
+
+        DocumentReference docRef = db.collection("articulos").document(etVerArtTitutlo.getText().toString());
+        docRef.set(articulos).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(AddPetActivity.this, ":D se pudieron guardar los nuevos datos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddArtActivity.this, ":D se pudieron guardar los nuevos datos", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AddPetActivity.this, "error al guardar los datos :(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddArtActivity.this, "error al guardar los datos :(", Toast.LENGTH_SHORT).show();
             }
         });
 
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("usuarioacambiar", txtModNombreUsuario.getText());
-        i.putExtra("usuario",usuario);
+        i.putExtra("usuario", usuario);
+        i.putExtra("irafragment","2");
         this.startActivity(i);
 
 
     }
+
 
     //método para llamar el explorador de imágenes
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(
@@ -140,7 +119,6 @@ public class AddPetActivity extends AppCompatActivity {
             }
     );
 
-    //una vez seleccionada la imagen en mGetContent nos disponemos a cambiarla
     private void cambiarImagen(Uri result) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
         Date now = new Date();
@@ -157,10 +135,9 @@ public class AddPetActivity extends AppCompatActivity {
                         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                txturiimagen.setText(uri.toString());
+                                uriartImagen.setText(uri.toString());
 
-                                Picasso.get().load(uri).resize(0, 200).error(R.mipmap.ic_launcher_round)
-                                        .into(cimagenMascota);
+                               Picasso.get().load(uri).resize(0, 200).error(R.mipmap.ic_launcher_round).into(imagenVerArt);
                                 // devolverURL(uri);
                                 // Toast.makeText(ModPetActivity.this, nuevaURL, Toast.LENGTH_SHORT).show();
                             }
@@ -175,4 +152,8 @@ public class AddPetActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
 }

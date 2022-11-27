@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imagenVerArt"
             android:layout_margin="8dp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:text="El texto" />
 
@@ -59,7 +60,8 @@
             android:layout_height="250dp"
             android:scaleType="centerCrop"
             android:src="@drawable/_527324"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/txtVerArtTexto"
@@ -68,7 +70,8 @@
             android:layout_below="@+id/imagenVerArt"
             android:layout_margin="8dp"
             android:textColor="@color/black"
-            android:text="El texto" />
+            android:text="El texto"
+            android:textSize="14dp"/>
 
 
     </LinearLayout>
