@@ -14,4 +14,13 @@
         <!-- Customize your theme here. -->
 
     </style>
+
+    <style name="Theme.ProyectoAndres.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ProyectoAndres.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ProyectoAndres.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,7 +43,7 @@ public class ModPetActivity extends AppCompatActivity {
     StorageReference storageReference;
     Uri urimascota;
     String usuario, idmascota, nuevaURL;
-
+    private FirebaseAuth mAuth;
     private static final String TAG = "ModPetActivity";
 
     @Override
@@ -73,6 +74,9 @@ public class ModPetActivity extends AppCompatActivity {
 
         //inicio la base de datos
         db = FirebaseFirestore.getInstance();
+
+        mAuth = FirebaseAuth.getInstance();
+        Toast.makeText(this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
 
         actualizalosdatos();
     }
@@ -143,7 +147,7 @@ public class ModPetActivity extends AppCompatActivity {
         });
 
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("usuario", txtModNombreUsuario.getText());
+        i.putExtra("usuario", mAuth.getCurrentUser().getEmail());
         i.putExtra("irafragment","2");
         this.startActivity(i);
     }

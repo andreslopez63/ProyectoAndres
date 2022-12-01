@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -38,7 +39,7 @@ public class AddArtActivity extends AppCompatActivity {
     Button btGuardarArt;
     StorageReference storageReference;
     String usuario;
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,8 @@ public class AddArtActivity extends AppCompatActivity {
         btGuardarArt.setOnClickListener(v -> uploadData());
         imagenVerArt.setOnClickListener(v -> mGetContent.launch("image/*"));
 
+        mAuth = FirebaseAuth.getInstance();
+        Toast.makeText(this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
     }
 
 

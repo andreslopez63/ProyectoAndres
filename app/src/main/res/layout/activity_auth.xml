@@ -63,7 +63,7 @@
                 android:hint="Usuario"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="Natalia@coco.es"/>
+                android:text="natalia@coco.es"/>
 
             <TextView
                 android:id="@+id/txtcontraseña"

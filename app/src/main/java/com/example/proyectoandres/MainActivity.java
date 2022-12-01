@@ -29,6 +29,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.proyectoandres.databinding.ActivityMainBinding;
 import com.google.common.graph.GraphBuilder;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,11 +44,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     String usuario, usuarioacambiar;
     Boolean VetoNo ,caca;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+         getSupportActionBar().hide();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -67,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        mAuth = FirebaseAuth.getInstance();
+        Toast.makeText(this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
 
         db = FirebaseFirestore.getInstance();
 
